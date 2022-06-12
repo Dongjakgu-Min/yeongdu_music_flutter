@@ -1,4 +1,6 @@
 
+import 'dart:typed_data';
+
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:get/get.dart';
 
@@ -6,7 +8,8 @@ import 'dart:developer';
 
 class AudioController extends GetxController {
   final OnAudioQuery _audioQuery = OnAudioQuery();
-  List<SongModel> songs = [];
+
+  List<SongModel> songList = [];
 
   @override
   void onInit() async {
@@ -16,14 +19,13 @@ class AudioController extends GetxController {
       await _audioQuery.permissionsRequest();
     }
 
-    songs = await _audioQuery.querySongs();
+    songList = await _audioQuery.querySongs();
   }
 
-  getLength() {
-    return songs.length;
-  }
+  get length => songs.length;
+  get songs => songList;
 
-  getSongs() {
-    return songs;
+  getArtwork(id) {
+    return _audioQuery.queryArtwork(id, ArtworkType.AUDIO, quality: 99);
   }
 }

@@ -25,6 +25,7 @@ void main() {
 }
 
 class Home extends StatelessWidget {
+  Home({Key? key}) : super(key: key);
   final AudioController audioController = Get.put(AudioController());
 
   @override
