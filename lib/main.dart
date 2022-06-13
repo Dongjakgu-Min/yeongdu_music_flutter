@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:async/async.dart';
 
 import 'package:path_provider/path_provider.dart';
+import 'package:yeongdu_music_flutter/controller/seek_controller.dart';
 import 'package:yeongdu_music_flutter/screen/navigation.dart';
 
 import 'dart:developer';
@@ -27,6 +28,7 @@ void main() {
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
   final AudioController audioController = Get.put(AudioController());
+  final SeekController seekController = Get.put(SeekController());
 
   @override
   Widget build(context) {

@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 import 'package:yeongdu_music_flutter/controller/audio_controller.dart';
+import 'package:just_audio/just_audio.dart';
 
 import 'dart:developer';
 
 import 'package:yeongdu_music_flutter/screen/player.dart';
 
+
 class SongList extends StatelessWidget {
   final AudioController audioController = Get.find();
+  final AudioPlayer _player = AudioPlayer();
 
   SongList({Key? key}) : super(key: key);
 
@@ -26,7 +29,6 @@ class SongList extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
             onTap: () {
-              log(songs[index].uri ?? 'path');
               Navigator.push(context, MaterialPageRoute(builder: (_) => MusicScreen(model: songs[index])));
             },
             child: Container(
